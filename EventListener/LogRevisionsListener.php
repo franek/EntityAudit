@@ -166,7 +166,8 @@ class LogRevisionsListener implements EventSubscriber
             } else if ($this->platform->getName() == 'postgresql') {
                 // For PostrgreSQL, we do not use trigger and use a sequence
                 // Sets revision's default sequence name for PostrgreSQL
-                $this->config->setRevisionSequenceName('revisions_id_seq');
+                // $this->config->setRevisionSequenceName('revisions_id_seq');
+                // Don't forget to set a default value in config.yml
                 $insertData[$this->config->getRevisionIdFieldName()] = (int)$this->conn->fetchColumn(
                     $this->platform->getSequenceNextValSQL($this->config->getRevisionSequenceName())
                 );
